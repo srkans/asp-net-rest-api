@@ -15,12 +15,12 @@ namespace Catalog.Repositories
         public MongoDbItemsRepository(IMongoClient mongoClient)
         {
             IMongoDatabase database = mongoClient.GetDatabase(databaseName);    
-                   
+
             itemsCollection = database.GetCollection<Item>(collectionName);
         }
         public void CreateItem(Item item)
         {
-            throw new NotImplementedException();
+            itemsCollection.InsertOne(item);
         }
 
         public void DeleteItem(Guid id)
