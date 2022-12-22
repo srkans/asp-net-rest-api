@@ -14,7 +14,8 @@ namespace Catalog.Repositories
 
         public MongoDbItemsRepository(IMongoClient mongoClient)
         {
-            IMongoDatabase database = mongoClient.GetDatabase(databaseName);           
+            IMongoDatabase database = mongoClient.GetDatabase(databaseName);    
+                   
             itemsCollection = database.GetCollection<Item>(collectionName);
         }
         public void CreateItem(Item item)
