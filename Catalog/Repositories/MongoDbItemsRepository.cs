@@ -29,7 +29,8 @@ namespace Catalog.Repositories
 
         public void DeleteItem(Guid id)
         {
-            throw new NotImplementedException();
+            var filter = filterBuilder.Eq(item=>item.Id,id);
+            itemsCollection.DeleteOne(filter);
         }
 
         public Item GetItem(Guid id)
@@ -45,8 +46,8 @@ namespace Catalog.Repositories
 
         public void UpdateItem(Item item)
         {
-            var filter = filterBuilder.Eq(existingitem=>existingitem.Id,item.Id);
-            itemsCollection.ReplaceOne(filter,item);
+            var filter = filterBuilder.Eq(existingItem=>existingItem.Id , item.Id);
+            itemsCollection.ReplaceOne(filter , item);
         }
     }
 }
