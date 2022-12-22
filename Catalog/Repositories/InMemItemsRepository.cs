@@ -14,6 +14,7 @@ namespace Catalog.Repositories
             new Item {Id= Guid.NewGuid(), Name="Bronze Shield", Price = 18, createdDate = DateTimeOffset.UtcNow }
          };
 
+   
         public IEnumerable<Item> GetItems()
         {
             return items;
@@ -22,6 +23,11 @@ namespace Catalog.Repositories
         public Item GetItem(Guid id)
         {
             return items.Where(item => item.Id == id).SingleOrDefault();
+        }
+
+        public void CreateItem(Item item)
+        {
+            items.Add(item);
         }
     }
 
